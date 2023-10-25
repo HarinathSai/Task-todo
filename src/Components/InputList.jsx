@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { BiSolidPencil } from "react-icons/bi";
 
@@ -7,10 +7,8 @@ const InputList = ({ todos, setTodos, setTodo, inputRef }) => {
 
   const handleDelete = (index) => {
     const filteredList = todos.filter((todo) => todo.id !== index);
-
     setTodos(filteredList);
   };
-
 
   const handleUpdate = (itemTOUpdate) => {
     inputRef.current.focus();
@@ -45,10 +43,10 @@ const InputList = ({ todos, setTodos, setTodo, inputRef }) => {
 
   return (
     <div>
-      <div className="list_heading">
+      <div className='list_heading'>
         <h1>TodoList</h1>
       </div>
-      <div className="btn_group">
+      <div className='btn_group'>
         <button onClick={() => setFilter("All")}>All</button>
         <button onClick={() => setFilter("Done")}>Done</button>
         <button onClick={() => setFilter("Todo")}>Todo</button>
@@ -57,15 +55,15 @@ const InputList = ({ todos, setTodos, setTodo, inputRef }) => {
         {todos &&
           handleFilter().map((todo) => (
             <div
-              className="single_todo_row"
+              className='single_todo_row'
               key={todo.id}
               style={todo.completed ? { textDecoration: "line-through" } : null}
             >
               {todo.title}
 
-              <div className="icons">
+              <div className='icons'>
                 <input
-                  type="checkbox"
+                  type='checkbox'
                   checked={todo.completed}
                   onChange={() => handleCheckBox(todo.id)}
                 />
@@ -75,7 +73,7 @@ const InputList = ({ todos, setTodos, setTodo, inputRef }) => {
             </div>
           ))}
       </ul>
-      <div className="delete_btns">
+      <div className='delete_btns'>
         <button onClick={handleCompletedTask}>Delete Done Tasks</button>
         <button onClick={() => setTodos([])}>Delete All Tasks</button>
       </div>
